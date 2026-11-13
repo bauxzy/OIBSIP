@@ -70,3 +70,23 @@ RelayChat_Advanced/
 - The default Flask secret key is for local development only. Before deployment, set a long random `SECRET_KEY` environment variable and use HTTPS/WSS.
 - Flask's built-in development server is not intended for production. Public deployment requires a production server and additional security review (including CSRF protection, rate limiting, origin restrictions and monitoring).
 - The SQLite database is excluded from Git so local user data is not committed.
+
+## Screenshots
+
+### 1. Registration Page
+![Registration](screenshots/01-register.png)
+
+### 2. Login Page
+![Login](screenshots/02-login.png)
+
+### 3. Chat Dashboard
+![Dashboard](screenshots/03-dashboard.png)
+
+### 4. Real-Time Messaging
+![Real-Time Chat](screenshots/04-realtime-chat.png)
+
+### 5. Persistent Message History
+![Message History](screenshots/05-message-history.png)
+
+### 6. Online Users
+![Online Users](screenshots/06-online-users.png)
