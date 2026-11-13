@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Sign in · RelayChat{% endblock %}{% block body_class %}auth-page{% endblock %}
+{% block content %}
+<main class="auth-shell">
+<section class="auth-brand"><div class="brand-mark">R</div><p class="eyebrow">A LITTLE CLOSER, IN REAL TIME</p><h1>Good conversations<br><span>start here.</span></h1><p class="brand-copy">A calm corner of the internet for your people, ideas and everyday conversations.</p><div class="brand-orbit orbit-one"></div><div class="brand-orbit orbit-two"></div></section>
+<section class="auth-panel"><div class="auth-card">
+<a class="wordmark" href="{{ url_for('login') }}">Relay<span>Chat</span></a><p class="eyebrow muted">WELCOME BACK</p><h2>Sign in to your space</h2><p class="subcopy">Pick up right where the conversation left off.</p>
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+<form method="POST" class="auth-form"><label for="username">Username</label><input id="username" name="username" type="text" placeholder="Your username" autocomplete="username" required><label for="password">Password</label><input id="password" name="password" type="password" placeholder="Your password" autocomplete="current-password" required><button class="primary-button" type="submit">Sign in <span>→</span></button></form>
+<p class="auth-switch">New to RelayChat? <a href="{{ url_for('register') }}">Create an account</a></p><p class="auth-foot">PRIVATE ROOMS · REAL-TIME MESSAGES</p>
+</div></section></main>{% endblock %}

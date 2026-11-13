@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}RelayChat · Your conversations{% endblock %}{% block body_class %}chat-page{% endblock %}
+{% block content %}
+<div class="app-shell">
+<aside class="sidebar">
+<a class="wordmark sidebar-wordmark" href="{{ url_for('chat') }}">Relay<span>Chat</span><i></i></a>
+<div class="profile-chip"><div class="avatar">{{ username[0]|upper }}</div><div><strong>{{ username }}</strong><small>Personal workspace</small></div><span class="profile-dot"></span></div>
+<div class="side-label">YOUR CHANNELS <span>03</span></div>
+<nav class="room-list" id="room-list">{% for room in rooms %}
+<button class="room-button" type="button" data-room-id="{{ room.id }}" data-room-name="{{ room.name }}" data-room-description="{{ room.description }}"><span class="hash">#</span><span class="room-name">{{ room.name }}</span><span class="room-indicator"></span></button>
+{% endfor %}</nav>
+<div class="sidebar-bottom"><div class="sidebar-note"><span class="note-icon">✳</span><p>Good conversations<br>make good days.</p></div><form method="POST" action="{{ url_for('logout') }}"><button class="logout-button" type="submit"><span>↗</span> Sign out</button></form></div>
+</aside>
+<main class="conversation">
+<header class="conversation-header"><div class="channel-heading"><div class="channel-kicker">RELAYCHAT / CHANNEL</div><h1 id="room-title">Choose your channel</h1><p id="room-description">Select a room to start a conversation.</p></div><div class="connection-pill" id="connection-pill"><span class="connection-dot"></span><span id="connection-label">Connecting</span></div></header>
+<section class="message-area" id="messages" aria-live="polite"><div class="welcome-card" id="welcome-card"><div class="welcome-symbol">✳</div><p class="eyebrow muted">A SPACE FOR YOUR PEOPLE</p><h2>Say something<br><em>worth sharing.</em></h2><p>Choose a channel on the left.<br>Your conversation starts there.</p></div></section>
+<div class="toast" id="toast" role="status"></div>
+<form class="composer" id="message-form"><div class="composer-icon">↳</div><input id="message-input" type="text" maxlength="1000" autocomplete="off" placeholder="Choose a channel to write a message…" disabled><span class="char-count" id="char-count">0 / 1000</span><button type="submit" id="send-button" disabled aria-label="Send message">↑</button></form>
+<footer class="conversation-footer"><span>RELAYCHAT</span><span>Messages are saved to this app's local database.</span><span id="online-count">0 HERE</span></footer>
+</main></div>
+<script>
+    window.RELAYCHAT = {
+        username: {{ username|tojson }},
+        websocketUrl:
+            (window.location.protocol === "https:" ? "wss://" : "ws://") +
+            window.location.host +
+            "/ws"
+    };
+</script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

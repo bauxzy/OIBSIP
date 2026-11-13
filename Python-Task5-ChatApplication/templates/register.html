@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Create account · RelayChat{% endblock %}{% block body_class %}auth-page{% endblock %}
+{% block content %}
+<main class="auth-shell">
+<section class="auth-brand"><div class="brand-mark">R</div><p class="eyebrow">YOUR PEOPLE, ONE PLACE</p><h1>Make room for<br><span>good things.</span></h1><p class="brand-copy">Create your account and join conversations that move at the speed of thought.</p><div class="brand-orbit orbit-one"></div><div class="brand-orbit orbit-two"></div></section>
+<section class="auth-panel"><div class="auth-card">
+<a class="wordmark" href="{{ url_for('login') }}">Relay<span>Chat</span></a><p class="eyebrow muted">GET STARTED</p><h2>Create your account</h2><p class="subcopy">A username, a password, and you're in.</p>
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+<form method="POST" class="auth-form"><label for="username">Username</label><input id="username" name="username" type="text" minlength="3" maxlength="20" placeholder="3–20 characters" autocomplete="username" required><label for="password">Password</label><input id="password" name="password" type="password" minlength="8" placeholder="At least 8 characters" autocomplete="new-password" required><label for="confirm_password">Confirm password</label><input id="confirm_password" name="confirm_password" type="password" minlength="8" placeholder="Enter it again" autocomplete="new-password" required><button class="primary-button" type="submit">Create account <span>→</span></button></form>
+<p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p><p class="auth-foot">PRIVATE ROOMS · REAL-TIME MESSAGES</p>
+</div></section></main>{% endblock %}
