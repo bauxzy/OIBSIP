@@ -1,0 +1,4 @@
+# Python standard library only; no external packages required.
+# FitTrack Pro
+# Python standard library only
+# tkinter and sqlite3 are included with standard Python installations
